@@ -36,9 +36,7 @@ function CoinItem({ coin }) {
     );
   } else {
     return (
-      <View style={styles.containerItem}>
-        <Text>Hola mundo!</Text>
-      </View>
+      <View style={styles.containerItem}></View>
     );
   }
 }

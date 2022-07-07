@@ -6,14 +6,11 @@ import CoinItem from "./components/CoinItem";
 function App() {
   const [coins, setCoins] = useState([]);
   const [search, setSearch] = useState('');
+  const [refreshing, setRefreshing] = useState(false);
 
   useEffect(() => {
     loadData();
   }, []);
-
-  useEffect(() => {
-    console.log(coins.filter((coin) => coin.name.toLowerCase().includes(search)));
-  }, [search]);
 
   async function loadData() {
     const res = await fetch(
@@ -37,11 +34,17 @@ function App() {
       </View>
       <FlatList
         style={styles.list}
-        data={coins.filter((coin) => coin.name.toLowerCase().includes(search) || coin.symbol.toLowerCase().includes(search))}
+        data={coins.filter((coin) => coin.name.includes(search) || coin.symbol.includes(search.toLowerCase()))}
         renderItem={({ item }) => {
           return <CoinItem coin={item} />;
         }}
         showsVerticalScrollIndicator={false}
+        refreshing={refreshing}
+        onRefresh={async () => {
+          setRefreshing(true);
+          await loadData();
+          setRefreshing(false);
+        }}
       />
     </View>
   );
