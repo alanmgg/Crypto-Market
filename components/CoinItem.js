@@ -1,26 +1,31 @@
 import React, { useEffect, useState } from "react";
 import { View, Text, StyleSheet, Image } from "react-native";
 
-function CoinItem({ coin }) {
+function CoinItem({ coin, themeHook }) {
   const [coins, setCoins] = useState();
+  const [theme, setTheme] = useState();
 
   useEffect(() => {
     setCoins(coin);
   }, [coin]);
 
+  useEffect(() => {
+    setTheme(themeHook);
+  }, [themeHook]);
+
   if (coins !== undefined) {
     return (
-      <View style={styles.containerItem}>
+      <View style={theme === 'light' ? styles.containerItem : styles.containerItem_dark}>
         <View style={styles.coinName}>
           <Image style={styles.image} source={{ uri: coins.image }} />
           <View style={styles.containerNames}>
-            <Text style={styles.text}>{coins.name}</Text>
+            <Text style={theme === 'light' ? styles.text : styles.text_dark}>{coins.name}</Text>
             <Text style={styles.textSymbol}>{coins.symbol}</Text>
           </View>
         </View>
 
         <View>
-          <Text style={styles.textPrice}>$ {coins.current_price}</Text>
+          <Text style={theme === 'light' ? styles.textPrice : styles.textPrice_dark}>USD {coins.current_price}</Text>
           <Text
             style={[
               styles.pricePercentage,
@@ -43,7 +48,11 @@ function CoinItem({ coin }) {
 
 const styles = StyleSheet.create({
   containerItem: {
-    backgroundColor: "#121212",
+    paddingTop: 10,
+    flexDirection: "row",
+    justifyContent: "space-between",
+  },
+  containerItem_dark: {
     paddingTop: 10,
     flexDirection: "row",
     justifyContent: "space-between",
@@ -59,13 +68,20 @@ const styles = StyleSheet.create({
     height: 30,
   },
   text: {
-    color: "#FFFFFF",
+    color: "#000000"
+  },
+  text_dark: {
+    color: "#FFFFFF"
   },
   textSymbol: {
     color: "#434343",
     textTransform: "uppercase",
   },
   textPrice: {
+    color: "#000000",
+    textAlign: "right",
+  },
+  textPrice_dark: {
     color: "#FFFFFF",
     textAlign: "right",
   },
