@@ -1,15 +1,15 @@
 {
   "expo": {
-    "name": "Crypto-Market",
-    "slug": "Crypto-Market",
+    "name": "Crypto Market",
+    "slug": "Crypto Market",
     "version": "1.0.0",
     "orientation": "portrait",
-    "icon": "./assets/icon.png",
+    "icon": "./assets/crypto-icon.png",
     "userInterfaceStyle": "light",
     "splash": {
-      "image": "./assets/splash.png",
+      "image": "./assets/crypto-splash.png",
       "resizeMode": "contain",
-      "backgroundColor": "#ffffff"
+      "backgroundColor": "#E6FAFC"
     },
     "updates": {
       "fallbackToCacheTimeout": 0
@@ -22,12 +22,12 @@
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
-        "backgroundColor": "#FFFFFF"
+        "foregroundImage": "./assets/crypto-adaptive-icon.png",
+        "backgroundColor": "#E6FAFC"
       }
     },
     "web": {
-      "favicon": "./assets/favicon.png"
+      "favicon": "./assets/crypto-favicon.png"
     },
     "description": "",
     "githubUrl": "https://github.com/alanmgg/Crypto-Market"

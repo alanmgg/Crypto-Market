@@ -20,7 +20,7 @@ function CoinItem({ coin, themeHook }) {
           <Image style={styles.image} source={{ uri: coins.image }} />
           <View style={styles.containerNames}>
             <Text style={theme === 'light' ? styles.text : styles.text_dark}>{coins.name}</Text>
-            <Text style={styles.textSymbol}>{coins.symbol}</Text>
+            <Text style={theme === 'light' ? styles.textSymbol : styles.textSymbol_dark}>{coins.symbol}</Text>
           </View>
         </View>
 
@@ -48,12 +48,12 @@ function CoinItem({ coin, themeHook }) {
 
 const styles = StyleSheet.create({
   containerItem: {
-    paddingTop: 10,
+    paddingTop: 20,
     flexDirection: "row",
     justifyContent: "space-between",
   },
   containerItem_dark: {
-    paddingTop: 10,
+    paddingTop: 20,
     flexDirection: "row",
     justifyContent: "space-between",
   },
@@ -77,6 +77,10 @@ const styles = StyleSheet.create({
     color: "#434343",
     textTransform: "uppercase",
   },
+  textSymbol_dark: {
+    color: "#E6FAFC",
+    textTransform: "uppercase",
+  },
   textPrice: {
     color: "#000000",
     textAlign: "right",
@@ -89,7 +93,7 @@ const styles = StyleSheet.create({
     textAlign: "right",
   },
   priceUp: {
-    color: "#00B5B9",
+    color: "#009C10",
   },
   priceDown: {
     color: "#FC4422",
